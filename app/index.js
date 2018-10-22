@@ -1,11 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import SampleComponent from './components/SampleComponent'
+import store from './store'
+import GetShopListContainer from './containers/getShopListContainer'
 
 render(
-  <Provider>
-    <SampleComponent />
+  <Provider store={store}>
+    <GetShopListContainer />
   </Provider>,
   document.getElementById('app'),
 )
