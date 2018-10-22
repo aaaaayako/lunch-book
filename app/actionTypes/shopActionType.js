@@ -1,0 +1,2 @@
+export const GET_SHOPS = 'GET_SHOPS'
+export const GET_SHOPS_FAILURE = 'GET_SHOPS_FAILURE'
