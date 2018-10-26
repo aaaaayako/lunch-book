@@ -8,7 +8,7 @@ const createCommonAction = (json, searchWord) => ({
   searchWord,
 })
 
-const getShops = (searchWord = '焼肉') => dispatch =>
+const getShops = (searchWord = '') => dispatch =>
   axios
     .get(
       `https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=155ad7008125ba527c2fcf91c5c1bdb8&name=${searchWord}`,
