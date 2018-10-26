@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import InfiniteScroll from 'react-infinite-scroller'
 
 import getShops from '../actions'
 import SearchBox from '../components/SearchBox'
 import ShopList from '../components/ShopList'
-import BottomNav from '../components/BottomNav'
 
 const ContentWrap = styled.div`
   font-family: '游ゴシック体', YuGothic, '游ゴシック Medium', 'Yu Gothic Medium',
@@ -34,13 +34,22 @@ const mapDispatchToProps = dispatch => ({
 
 const GetShopListContainer = props => {
   const { shops, action } = props
+  const shopArrLength = shops.shopArray.rest.length
   return (
     <ContentWrap>
       <SearchBox getShops={action.getShops} />
       <ShopsContainer>
-        <ShopList shops={shops} />
+        {shopArrLength === 0 ? null : (
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={() => action.getShops(shops.word, shopArrLength)}
+            hasMore={true || false}
+            loader={<div key={0}>Loading ...</div>}
+          >
+            <ShopList shops={shops} />
+          </InfiniteScroll>
+        )}
       </ShopsContainer>
-      <BottomNav />
     </ContentWrap>
   )
 }

@@ -7,6 +7,7 @@ import styledNormalize from 'styled-normalize'
 import { injectGlobal } from 'styled-components'
 import store from './store'
 import GetShopListContainer from './containers/getShopListContainer'
+import BottomNav from './components/BottomNav'
 
 injectGlobal`
   ${styledNormalize}
@@ -26,6 +27,7 @@ render(
     <Provider store={store}>
       <GetShopListContainer />
     </Provider>
+    <BottomNav />
   </MuiThemeProvider>,
   document.getElementById('app'),
 )
